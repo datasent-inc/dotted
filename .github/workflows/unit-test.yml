@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Check Out the Repo
         uses: actions/checkout@v4
-      - name: Copy .env
-        run: cp ".env.ci-test" ".env"
       - name: Setup Node
         uses: oven-sh/setup-bun@v2
         with:
