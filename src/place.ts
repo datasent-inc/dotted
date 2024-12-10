@@ -1,12 +1,16 @@
 import { type Criterion, CriterionType } from "./types.ts";
 import { criterionParse } from "./criterionParse.ts";
 import { pick } from "./pick.ts";
+import {queryStringToCriteria} from "./queryStringToCriteria.ts";
 
 export const place = (
   value: any,
   object: any,
-  query: string[] | Criterion[],
+  query: string | string[] | Criterion[],
 ): any => {
+  if (typeof query === "string") {
+    query = queryStringToCriteria(query)
+  }
   let placement: any = value;
   query = query.reverse();
   for (let idx = 0; idx < query.length; idx++) {

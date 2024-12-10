@@ -173,4 +173,25 @@ describe("pick", () => {
     );
   });
 
+    test("should allow a query string", () => {
+        expect(
+            pick(
+                {
+                    authors: [
+                        {
+                            name: "Luna",
+                        },
+                        {
+                            name: "Salhe",
+                        },
+                    ],
+                },
+                '.authors.[0]',
+            ),
+        ).toEqual(
+            {
+                name: "Luna",
+            }
+        );
+    })
 });

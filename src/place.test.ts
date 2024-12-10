@@ -26,4 +26,10 @@ describe("place", () => {
       next: "val",
     });
   });
+
+  test("should allow a string query", () => {
+    expect(place("My article name", { first: [] }, '.first.[0]')).toEqual({
+      first: ["My article name"],
+    });
+  });
 });
