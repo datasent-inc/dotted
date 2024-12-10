@@ -11,13 +11,22 @@ Built with [Bun](https://bun.sh)
 
 Coming soon
 
+
+## Import
+
+```Typescript
+import dotted from "dotted"
+//or
+import {pick, place} from "dotted"
+```
+
+
+
 ## dotted.pick
 
 Get an element from an object
 
 ```Typescript
-import dotted from "dotted"
-
 const object = {
     'articles': [
         {
@@ -67,8 +76,6 @@ Add an element to an object
 Add/append an element to an array
 
 ```Typescript
-import dotted from "dotted"
-
 const object = {
     'articles': [
         {
@@ -109,8 +116,6 @@ dotted.place(
 using a specific index, insert an element into an array
 
 ```Typescript
-import dotted from "dotted"
-
 const object = {
     'articles': [
         {
@@ -147,8 +152,6 @@ dotted.place(
 
 
 ```Typescript
-import dotted from "dotted"
-
 const object = {
     'articles': [
         {
