@@ -6,6 +6,8 @@ Manipulate and extract data in objects, and arrays.
 
 Built with [Bun](https://bun.sh)
 
+Usable in the browser/node/etc. 
+
 
 ## install
 
@@ -265,3 +267,12 @@ dotted.place(
 // }
 
 ```
+
+
+### Isn't this just like ____?
+
+* [jq](https://jqlang.github.io/jq/)?  No.  This code takes inspiration from jq, but does not intend to be a replacement, or a competitor.
+
+* [dot-object](https://github.com/rhalff/dot-object)? Again, no.  This arose from a similar need, but the code for dot-object is not as maintained as desired. 
+
+So while inspiration was drawn from other sources, the goals and end product are not the same.  Feel free to use the tool of your choice.
