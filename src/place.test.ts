@@ -21,14 +21,14 @@ describe("place", () => {
   });
 
   test("should add a value to the root of an object", () => {
-    expect(place({next:"val"}, { prev: "value" }, [''])).toEqual({
+    expect(place({ next: "val" }, { prev: "value" }, [""])).toEqual({
       prev: "value",
       next: "val",
     });
   });
 
   test("should allow a string query", () => {
-    expect(place("My article name", { first: [] }, '.first.[0]')).toEqual({
+    expect(place("My article name", { first: [] }, ".first.[0]")).toEqual({
       first: ["My article name"],
     });
   });

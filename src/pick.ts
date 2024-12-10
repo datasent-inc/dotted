@@ -1,10 +1,13 @@
 import { type Criterion, CriterionType } from "./types.ts";
 import { criterionParse } from "./criterionParse.ts";
-import {queryStringToCriteria} from "./queryStringToCriteria.ts";
+import { queryStringToCriteria } from "./queryStringToCriteria.ts";
 
-export const pick = (object: any, query: string | string[] | Criterion[]): any => {
+export const pick = (
+  object: any,
+  query: string | string[] | Criterion[],
+): any => {
   if (typeof query === "string") {
-    query = queryStringToCriteria(query)
+    query = queryStringToCriteria(query);
   }
   let current: any = object;
   let reductionCount = query.filter(

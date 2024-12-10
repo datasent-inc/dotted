@@ -124,20 +124,7 @@ describe("pick", () => {
 
   test("should return the root object", () => {
     expect(
-        pick(
-            {
-              authors: [
-                {
-                  name: "Luna",
-                },
-                {
-                  name: "Salhe",
-                },
-              ],
-            },
-            [""],
-        ),
-    ).toEqual(
+      pick(
         {
           authors: [
             {
@@ -147,21 +134,21 @@ describe("pick", () => {
               name: "Salhe",
             },
           ],
-        }
-    );
+        },
+        [""],
+      ),
+    ).toEqual({
+      authors: [
+        {
+          name: "Luna",
+        },
+        {
+          name: "Salhe",
+        },
+      ],
+    });
     expect(
-        pick(
-            [
-              {
-                name: "Luna",
-              },
-              {
-                name: "Salhe",
-              },
-            ],
-            [""],
-        ),
-    ).toEqual(
+      pick(
         [
           {
             name: "Luna",
@@ -169,29 +156,36 @@ describe("pick", () => {
           {
             name: "Salhe",
           },
-        ]
-    );
+        ],
+        [""],
+      ),
+    ).toEqual([
+      {
+        name: "Luna",
+      },
+      {
+        name: "Salhe",
+      },
+    ]);
   });
 
-    test("should allow a query string", () => {
-        expect(
-            pick(
-                {
-                    authors: [
-                        {
-                            name: "Luna",
-                        },
-                        {
-                            name: "Salhe",
-                        },
-                    ],
-                },
-                '.authors.[0]',
-            ),
-        ).toEqual(
+  test("should allow a query string", () => {
+    expect(
+      pick(
+        {
+          authors: [
             {
-                name: "Luna",
-            }
-        );
-    })
+              name: "Luna",
+            },
+            {
+              name: "Salhe",
+            },
+          ],
+        },
+        ".authors.[0]",
+      ),
+    ).toEqual({
+      name: "Luna",
+    });
+  });
 });

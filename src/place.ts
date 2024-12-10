@@ -1,7 +1,7 @@
 import { type Criterion, CriterionType } from "./types.ts";
 import { criterionParse } from "./criterionParse.ts";
 import { pick } from "./pick.ts";
-import {queryStringToCriteria} from "./queryStringToCriteria.ts";
+import { queryStringToCriteria } from "./queryStringToCriteria.ts";
 
 export const place = (
   value: any,
@@ -9,7 +9,7 @@ export const place = (
   query: string | string[] | Criterion[],
 ): any => {
   if (typeof query === "string") {
-    query = queryStringToCriteria(query)
+    query = queryStringToCriteria(query);
   }
   let placement: any = value;
   query = query.reverse();
@@ -30,8 +30,8 @@ export const place = (
       arrayToPlace[criterion.search] = placement;
       placement = arrayToPlace;
     } else if (criterion.type === CriterionType.root) {
-      object = {...object, ...value}
-      idx = query.length
+      object = { ...object, ...value };
+      idx = query.length;
     }
   }
   return object;
