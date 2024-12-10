@@ -121,4 +121,56 @@ describe("pick", () => {
       ),
     ).toEqual(["Steve", "Luna", "Salhe"]);
   });
+
+  test("should return the root object", () => {
+    expect(
+        pick(
+            {
+              authors: [
+                {
+                  name: "Luna",
+                },
+                {
+                  name: "Salhe",
+                },
+              ],
+            },
+            [""],
+        ),
+    ).toEqual(
+        {
+          authors: [
+            {
+              name: "Luna",
+            },
+            {
+              name: "Salhe",
+            },
+          ],
+        }
+    );
+    expect(
+        pick(
+            [
+              {
+                name: "Luna",
+              },
+              {
+                name: "Salhe",
+              },
+            ],
+            [""],
+        ),
+    ).toEqual(
+        [
+          {
+            name: "Luna",
+          },
+          {
+            name: "Salhe",
+          },
+        ]
+    );
+  });
+
 });

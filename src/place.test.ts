@@ -19,4 +19,11 @@ describe("place", () => {
       a: ["first", "My article name"],
     });
   });
+
+  test("should add a value to the root of an object", () => {
+    expect(place({next:"val"}, { prev: "value" }, [''])).toEqual({
+      prev: "value",
+      next: "val",
+    });
+  });
 });

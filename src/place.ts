@@ -25,6 +25,9 @@ export const place = (
       let arrayToPlace = pick(object, query.slice(-1).reverse());
       arrayToPlace[criterion.search] = placement;
       placement = arrayToPlace;
+    } else if (criterion.type === CriterionType.root) {
+      object = {...object, ...value}
+      idx = query.length
     }
   }
   return object;

@@ -3,6 +3,11 @@ import { type Criterion, CriterionType } from "./types.ts";
 export const criterionParse = (search: string | Criterion): Criterion => {
   if (search.hasOwnProperty("type")) {
     return search as Criterion;
+  } else if ((search as string) === '') {
+    return {
+      search: "",
+      type: CriterionType.root,
+    };
   } else if ((search as string).match(/^\[\*]$/) !== null) {
     return {
       search: "[*]",

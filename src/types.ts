@@ -1,5 +1,5 @@
 export enum CriterionType {
-  undefined = "undefined",
+  root = "root",
   objectMatch = "objectMatch",
   arrayMatch = "arrayMatch",
   arrayAppend = "arrayAppend",
