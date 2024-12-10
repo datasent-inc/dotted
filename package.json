@@ -1,0 +1,16 @@
+{
+  "name": "dotted",
+  "module": "./src/dotted.ts",
+  "type": "module",
+  "scripts": {
+    "build": "bun run ./scripts/build.ts",
+    "lint": "bunx eslint",
+    "format": "bunx prettier --ignore-path .prettierignore --write \"**/*.+(js|ts|json)\""
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
