@@ -2,20 +2,14 @@
 
 # dotted
 
-To install dependencies:
+Manipulate and extract data in objects, and arrays.
 
-```bash
-bun install
-```
+Built with [Bun](https://bun.sh)
 
-To run:
 
-```bash
-bun run ./src/dotted.ts
-```
+## install
 
-This project was created using `bun init` in bun v1.1.32. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
-
+Coming soon
 
 ## dotted.pick
 
@@ -37,19 +31,19 @@ const object = {
 
 dotted.pick(
     object,
-    ['articles']
+    '.articles'
 )
 //[{'title': 'An article'}.{'title': 'An other article'}]
 
 dotted.pick(
     object,
-    ['articles','[0]','title']
+    'articles.[0].title'
 )
 //'An article'
 
 dotted.pick(
     object,
-    ['articles','[1]','title']
+    '.articles.[1].title'
 )
 //'An other article'
 
@@ -57,7 +51,7 @@ dotted.pick(
 //TODO
 dotted.pick(
     object,
-    ['articles','[]','title']
+    '.articles.[].title'
 )
 //['An article', 'An other article']
 
@@ -90,7 +84,7 @@ const object = {
 dotted.place(
     {'title': 'new publication'},
     object,
-    ['articles', '[]']
+    '.articles.[]'
 )
 
 // {
@@ -132,7 +126,7 @@ const object = {
 dotted.place(
     {'title': 'new publication'},
     object,
-    ['articles', '[1]']
+    '.articles.[1]'
 )
 
 // {
@@ -170,7 +164,7 @@ const object = {
 dotted.place(
     {author: 'Samwise Gamgee'},
     object,
-    ['articles', '[0]']
+    '.articles.[0]'
 )
 
 // {
@@ -188,3 +182,83 @@ dotted.place(
 ```
 
 
+## FAQ
+
+### Why doesn't it do _____ ?
+
+Just never thought of it, or never needed the feature.  Feel free to open a PR.
+
+
+### How do I query if my path contains a period (.)?
+
+Just pass an array into `pick` or `place` like this:
+
+```Typescript
+const object = {
+    'articles.are.cool': [
+        {
+            'title.value': 'An article'
+        },
+        {
+            'title.value': 'An other article'
+        }
+    ]
+}
+
+//Append an element to an array
+dotted.place(
+    {author: 'Samwise Gamgee'},
+    object,
+    ['articles.are.cool', '[0]']
+)
+
+// {
+//   'articles': [
+//     {
+//         'title': 'An article'
+//         'author': 'Samwise Gamgee'
+//     },
+//     {
+//         'title': 'new publication'
+//     }
+//   ]
+// }
+
+```
+
+### How do I query if my path object property is in the array query format
+
+This is a little bit of a annoyance, but you can still query it using a Criterion[] array.
+
+This may change in a future version of the code.
+
+```Typescript
+const object = {
+    '[1]': {
+        '[2]': [
+            'value'
+        ]
+    }
+}
+
+//Append an element to an array
+dotted.place(
+    'another',
+    object,
+    [
+        {search: '[1]', CriterionType.objectMatch},
+        {search: '[2]', CriterionType.objectMatch},
+        {search: '[]', CriterionType.arrayAppend}
+    ]
+)
+
+// {
+//     '[1]': {
+//         '[2]': [
+//             'value',
+//             'another'
+//         ]
+//     }
+// }
+
+```
