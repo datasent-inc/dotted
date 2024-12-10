@@ -46,7 +46,7 @@ dotted.pick(
 
 dotted.pick(
     object,
-    'articles.[0].title'
+    '.articles.[0].title'
 )
 //'An article'
 
