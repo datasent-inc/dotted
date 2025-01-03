@@ -2,6 +2,8 @@
   "name": "dotted",
   "module": "./src/dotted.ts",
   "type": "module",
+  "license": "Apache-2.0",
+  "author": "Greg Elliot <greg.elliot@datasent.com>",
   "scripts": {
     "build": "bun run ./scripts/build.ts",
     "lint": "bunx eslint",
