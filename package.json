@@ -8,7 +8,8 @@
   "scripts": {
     "build": "bun run ./scripts/build.ts",
     "lint": "bunx eslint",
-    "format": "bunx prettier --ignore-path .prettierignore --write \"**/*.+(js|ts|json)\""
+    "format": "bunx prettier --ignore-path .prettierignore --write \"**/*.+(js|ts|json)\"",
+    "prepack": "bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest"
