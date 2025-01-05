@@ -1,10 +1,12 @@
 {
-  "name": "dotted",
+  "name": "@datasent-inc/dotted",
   "module": "./src/dotted.ts",
   "type": "module",
   "license": "Apache-2.0",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Greg Elliot <greg.elliot@datasent.com>",
+  "main": "dist/dotted.js",
+  "types": "dist/dotted.d.ts",
   "scripts": {
     "build": "bun run ./scripts/build.ts",
     "lint": "bunx eslint",
@@ -12,7 +14,8 @@
     "prepack": "bun run build"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.3.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
