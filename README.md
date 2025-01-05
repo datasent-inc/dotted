@@ -11,17 +11,26 @@ Usable in the browser/node/etc.
 
 ## install
 
-Coming soon
+Bun:
+
+    bun install @datasent-inc/dotted
+
+
+npm:
+
+    npm install @datasent-inc/dotted
+
+
+yarn:
+
+    yarn add @datasent-inc/dotted
 
 
 ## Import
 
 ```Typescript
-import dotted from "dotted"
-//or
-import {pick, place} from "dotted"
+import dotted from "@datasent-inc/dotted"
 ```
-
 
 
 ## dotted.pick
