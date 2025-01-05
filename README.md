@@ -1,4 +1,4 @@
-![Test/Lint status](https://github.com/awildeep/dotted/actions/workflows/unit-test.yml/badge.svg?branch=main)
+![Test/Lint status](https://github.com/datasent-inc/dotted/actions/workflows/unit-test.yml/badge.svg?branch=main)
 
 # dotted
 
