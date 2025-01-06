@@ -26,6 +26,10 @@ export const place = (
       place(arrayToAppend, placement, query.slice(-1).reverse());
       placement = arrayToAppend;
     } else if (criterion.type === CriterionType.arrayMatch) {
+      //Verify that we have an array to append to, if not make one
+      if (!Array.isArray(pick(object, query.slice(-1).reverse()))) {
+        place([], object, query.slice(-1).reverse());
+      }
       let arrayToPlace = pick(object, query.slice(-1).reverse());
       arrayToPlace[criterion.search] = placement;
       placement = arrayToPlace;
