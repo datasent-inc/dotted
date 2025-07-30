@@ -57,13 +57,13 @@ dotted.pick(
 
 dotted.pick(
     object,
-    '.articles.[0].title'
+    '.articles[0].title'
 )
 //'An article'
 
 dotted.pick(
     object,
-    '.articles.[1].title'
+    '.articles[1].title'
 )
 //'An other article'
 
@@ -71,7 +71,7 @@ dotted.pick(
 //TODO
 dotted.pick(
     object,
-    '.articles.[].title'
+    '.articles[].title'
 )
 //['An article', 'An other article']
 
@@ -102,7 +102,7 @@ const object = {
 dotted.place(
     {'title': 'new publication'},
     object,
-    '.articles.[]'
+    '.articles[]'
 )
 
 // {
@@ -142,7 +142,7 @@ const object = {
 dotted.place(
     {'title': 'new publication'},
     object,
-    '.articles.[1]'
+    '.articles[1]'
 )
 
 // {
@@ -178,7 +178,7 @@ const object = {
 dotted.place(
     {author: 'Samwise Gamgee'},
     object,
-    '.articles.[0]'
+    '.articles[0]'
 )
 
 // {

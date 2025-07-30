@@ -10,7 +10,7 @@ describe('pick', () => {
             title: 'how to pick your friends',
           },
         },
-        ['article'],
+        '.article',
       ),
     ).toEqual({
       title: 'how to pick your friends',
@@ -22,7 +22,7 @@ describe('pick', () => {
             title: 'how to pick your friends',
           },
         },
-        ['article', 'title'],
+        '.article.title',
       ),
     ).toEqual('how to pick your friends')
   })
@@ -38,7 +38,7 @@ describe('pick', () => {
             },
           ],
         },
-        ['articles'],
+        '.articles',
       ),
     ).toEqual([
       {
@@ -61,7 +61,7 @@ describe('pick', () => {
             },
           ],
         },
-        ['articles', '[0]'],
+        '.articles[0]',
       ),
     ).toEqual({
       title: 'how to pick your friends',
@@ -84,7 +84,7 @@ describe('pick', () => {
             },
           ],
         },
-        ['articles', '[*]', 'title'],
+        '.articles[*].title',
       ),
     ).toEqual(['how to pick your friends', '2'])
   })
@@ -117,7 +117,7 @@ describe('pick', () => {
             },
           ],
         },
-        ['articles', '[*]', 'authors', '[*]', 'name'],
+        '.articles[*].authors[*].name',
       ),
     ).toEqual(['Steve', 'Luna', 'Salhe'])
   })
@@ -135,7 +135,7 @@ describe('pick', () => {
             },
           ],
         },
-        [''],
+        '.',
       ),
     ).toEqual({
       authors: [
@@ -157,7 +157,7 @@ describe('pick', () => {
             name: 'Salhe',
           },
         ],
-        [''],
+        '.',
       ),
     ).toEqual([
       {
@@ -182,7 +182,7 @@ describe('pick', () => {
             },
           ],
         },
-        '.authors.[0]',
+        '.authors[0]',
       ),
     ).toEqual({
       name: 'Luna',

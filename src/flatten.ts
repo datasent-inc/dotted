@@ -1,3 +1,11 @@
+export const stripArrayDots = (obj: any): { [key: string]: any } => {
+  const ret: { [key: string]: any } = {}
+  for (let key in obj) {
+    ret[key.replaceAll('.[', '[')] = obj[key]
+  }
+  return ret
+}
+
 export const flatten = (
   obj: any,
   delimiter: string = '.',
@@ -16,6 +24,6 @@ export const flatten = (
     } else {
       acc['.' + pre + found] = obj[found]
     }
-    return acc
+    return stripArrayDots(acc)
   }, {})
 }

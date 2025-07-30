@@ -9,8 +9,8 @@ describe('flatten', () => {
     }
     expect(flatten(input)).toEqual({
       '.key': 'value',
-      '.array.[0]': '1',
-      '.array.[1]': 2,
+      '.array[0]': '1',
+      '.array[1]': 2,
     })
   })
 })

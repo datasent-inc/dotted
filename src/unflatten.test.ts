@@ -5,8 +5,8 @@ describe('toObject', () => {
   test('should convert a hash of dot paths and values to an object', () => {
     const input = {
       '.key': 'value',
-      '.array.[0]': '1',
-      '.array.[1]': 2,
+      '.array[0]': '1',
+      '.array[1]': 2,
     }
 
     expect(unflatten(input)).toEqual({
