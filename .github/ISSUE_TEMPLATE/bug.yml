@@ -1,0 +1,75 @@
+name: Bug
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Please describe the bug
+      placeholder: There is an uncaught exception in the code that causes future code to fail to execute
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What is the expected behavior?
+      placeholder: What do you expect to see?
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What is the actual behavior?
+      placeholder: What do you actually to see?
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: input
+    id: commit_hash
+    attributes:
+      label: Commit hash
+      description: Which commit can this bug/issue be reproduced in?
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this issue?
+      options:
+        - Low
+        - Medium
+        - High
+        - Urgent
+      default: 0
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: dropdown
+    id: size
+    attributes:
+      label: Size
+      description: How big is this ask? (If XX-Large, please consider making this a story)
+      options:
+        - X-Small
+        - Small
+        - Medium
+        - Large
+        - X-Large
+        - XX-Large
+      default: 0
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: textarea
+    id: other_information
+    attributes:
+      label: Other information
+      description: Any related issues/other information needed?

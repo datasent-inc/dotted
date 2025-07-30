@@ -1,0 +1,42 @@
+policy:
+  - template: ['story.yml']
+    section:
+      - id: [ 'severity' ]
+        block-list: [ ]
+        label:
+          - name: 'Low'
+            keys: [ 'Low', 'None' ]
+          - name: 'Medium'
+            keys: [ 'Medium' ]
+          - name: 'High'
+            keys: [ 'High' ]
+          - name: 'Urgent'
+            keys: [ 'Urgent' ]
+  - template: ['bug.yml', 'feature.yml']
+    section:
+      - id: ['severity']
+        block-list: []
+        label:
+          - name: 'Low'
+            keys: ['Low', 'None']
+          - name: 'Medium'
+            keys: ['Medium']
+          - name: 'High'
+            keys: ['High']
+          - name: 'Urgent'
+            keys: ['Urgent']
+      - id: [ 'size' ]
+        block-list: [ ]
+        label:
+          - name: 'X-Small'
+            keys: [ 'X-Small', 'None']
+          - name: 'Small'
+            keys: [ 'Small' ]
+          - name: 'Medium'
+            keys: [ 'Medium' ]
+          - name: 'Large'
+            keys: [ 'Large' ]
+          - name: 'X-Large'
+            keys: [ 'X-Large' ]
+          - name: 'XX-Large'
+            keys: [ 'XX-Large' ]

@@ -1,12 +1,12 @@
 export enum CriterionType {
-  root = "root",
-  objectMatch = "objectMatch",
-  arrayMatch = "arrayMatch",
-  arrayAppend = "arrayAppend",
-  arrayWildCard = "arrayWildCard",
+  root = 'root',
+  objectMatch = 'objectMatch',
+  arrayMatch = 'arrayMatch',
+  arrayAppend = 'arrayAppend',
+  arrayWildCard = 'arrayWildCard',
 }
 
 export interface Criterion {
-  search: string | number;
-  type: CriterionType;
+  search: string | number
+  type: CriterionType
 }

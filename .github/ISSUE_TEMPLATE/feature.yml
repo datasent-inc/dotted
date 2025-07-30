@@ -1,0 +1,80 @@
+name: Feature
+description: Open a feature
+title: "[Feature]: "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Please describe the task
+      placeholder: The flying carpet needs a red racing stripe
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this issue?
+      options:
+        - Low
+        - Medium
+        - High
+        - Urgent
+      default: 0
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: dropdown
+    id: size
+    attributes:
+      label: Size
+      description: How big is this ask? (If XX-Large, please consider making this a story)
+      options:
+        - X-Small
+        - Small
+        - Medium
+        - Large
+        - X-Large
+        - XX-Large
+      default: 0
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed solution
+      description: Proposed solution
+      placeholder: Remove three blue courses of thread in the middle of the carpet, and replace them with red.
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: textarea
+    id: other_solutions
+    attributes:
+      label: Other solutions explored
+      description: Other solutions explored
+      placeholder: Bleaching, then dyeing some red.
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      description: Acceptance criteria
+      placeholder: The carpet should be blue, with a red racing stripe
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+
+  - type: textarea
+    id: related_issues
+    attributes:
+      label:  Related issues/tasks/etc
+      description: Are there any other tasks or issues?  Dependencies? etc?
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: false

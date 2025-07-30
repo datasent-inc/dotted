@@ -1,0 +1,37 @@
+# See configuration in .github/advanced-issue-labeler.yml
+
+name: Issue labeler (policy)
+on:
+  issues:
+    types: [ opened ]
+
+jobs:
+  label-issues-policy:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+      # only required for workflows in private repositories
+      actions: read
+      contents: read
+
+    strategy:
+      matrix:
+        template: [ bug.yml, feature.yml ]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Parse issue form
+        uses: stefanbuck/github-issue-parser@v3
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/${{ matrix.template }}
+
+      - name: Advanced Issue Labeler
+        uses: redhat-plumbers-in-action/advanced-issue-labeler@v2.0.6
+        with:
+          github-token: ${{secrets.PAT}}
+          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          template: ${{ matrix.template }}
+          token: ${{ secrets.GITHUB_TOKEN }}
