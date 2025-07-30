@@ -12,7 +12,8 @@
     "lint": "bunx eslint",
     "format": "bunx prettier --ignore-path .prettierignore --write \"**/*.+(js|ts|json)\"",
     "format:ci": "bunx prettier --ignore-path .prettierignore --check \"**/*.+(js|ts|json)\"",
-    "prepack": "bun run build"
+    "prepack": "bun run build",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@types/bun": "latest",
