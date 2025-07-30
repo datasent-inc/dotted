@@ -11,6 +11,7 @@
     "build": "bun run ./scripts/build.ts",
     "lint": "bunx eslint",
     "format": "bunx prettier --ignore-path .prettierignore --write \"**/*.+(js|ts|json)\"",
+    "format:ci": "prettier --ignore-path .prettierignore --check \"**/*.+(js|ts|json)\"",
     "prepack": "bun run build"
   },
   "devDependencies": {
