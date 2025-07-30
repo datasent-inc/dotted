@@ -1,4 +1,3 @@
 bun run format:ci
-bun run test
-bunx lint-staged
-
+bun lint
+bun test
