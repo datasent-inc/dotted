@@ -1,0 +1,5 @@
+[install.scopes]
+"@datasent-inc" = { url = "npm.pkg.github.com", token = "$GITHUB_TOKEN" }
+
+[test]
+root = "src"
