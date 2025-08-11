@@ -1,0 +1,40 @@
+name: Story
+description: A story is a large topic, usually consisting of many features
+title: "[Story]: "
+labels: ["story"]
+body:
+  - type: input
+    id: description
+    attributes:
+      label: Description
+      placeholder: The flying carpet needs a red racing stripe
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this issue?
+      options:
+        - Low
+        - Medium
+        - High
+        - Urgent
+      default: 0
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+  - type: textarea
+    id: features
+    attributes:
+      label: List the features required
+      description: Proposed solution
+      placeholder: |
+        - [ ] #17
+        - [ ] #19
+        - [ ] #27
+    # Not supported yet in private repo's https://github.com/orgs/community/discussions/51500
+    validations:
+      required: true
+

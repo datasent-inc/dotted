@@ -1,0 +1,27 @@
+comment:
+  header: Hi, there.
+  footer: "\
+    ---\n\n\
+    > This is an automated comment created by the [peaceiris/actions-label-commenter]. \
+    Responding to the bot or mentioning it won't have any effect.\n\n\
+    [peaceiris/actions-label-commenter]: https://github.com/peaceiris/actions-label-commenter"
+
+labels:
+  - name: triage
+    labeled:
+      issue:
+        body: This task is ready for assessment, and assignment.
+  - name: wontfix
+    labeled:
+      issue:
+        body: This will not be worked on but we appreciate your contribution.
+        action: close
+    unlabeled:
+      issue:
+        body: This has become active again.
+        action: open
+  - name: duplicate
+    labeled:
+      issue:
+        body: This issue already exists.
+        action: close

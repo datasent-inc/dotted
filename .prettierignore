@@ -1,0 +1,12 @@
+.idea
+.vscode
+
+**/.DS_Store
+
+.env
+.env.local
+.env.*.local
+
+dist/
+migrations/
+node_modules/
