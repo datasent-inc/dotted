@@ -16,7 +16,7 @@
     "format": "prettier --ignore-path .prettierignore --write \"**/*.+(js|ts|json)\"",
     "format:ci": "prettier --ignore-path .prettierignore --check \"**/*.+(js|ts|json)\"",
     "prepack": "bun run build",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "devDependencies": {
     "@types/bun": "latest",
