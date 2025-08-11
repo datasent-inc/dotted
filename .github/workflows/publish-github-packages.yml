@@ -24,6 +24,9 @@ jobs:
         with:
           bun-version-file: ".bun-version"
       - run: bun install
+        env:
+          HUSKY: 0
       - run: bun publish
         env:
+          HUSKY: 0
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
