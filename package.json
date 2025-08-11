@@ -4,6 +4,9 @@
   "type": "module",
   "license": "Apache-2.0",
   "version": "1.0.5",
+  "repository": {
+    "url": "https://github.com/datasent-inc/dotted.git"
+  },
   "author": "Greg Elliot <greg.elliot@datasent.com>",
   "main": "dist/dotted.js",
   "types": "dist/dotted.d.ts",
