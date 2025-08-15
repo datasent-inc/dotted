@@ -195,6 +195,44 @@ dotted.place(
 
 ```
 
+## dotted.remove
+
+### Insert an element to an object
+
+
+```Typescript
+const object = {
+    'articles': [
+        {
+            'title': 'An article',
+            'remove': 'me'
+        },
+        {
+            'title': 'An other article'
+        }
+    ]
+}
+
+
+
+//remove an element from an array
+dotted.remove(
+    object,
+    '.articles[0].remove'
+)
+
+// {
+//   'articles': [
+//     {
+//         'title': 'An article'
+//     },
+//     {
+//         'title': 'new publication'
+//     }
+//   ]
+// }
+
+```
 
 ## FAQ
 
