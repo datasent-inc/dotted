@@ -34,4 +34,56 @@ describe('remove', () => {
       ],
     })
   })
+
+  test('remove the last property of an object', () => {
+    const again = {
+      myKey: '1',
+      other: '2',
+      nested: [
+        {
+          a: '3',
+          b: '4',
+        },
+        {
+          e: '3',
+        },
+        {
+          c: '3',
+          d: '4',
+        },
+      ],
+    }
+    expect(remove(again, '.nested[1].e')).toEqual({
+      myKey: '1',
+      other: '2',
+      nested: [
+        {
+          a: '3',
+          b: '4',
+        },
+        {},
+        {
+          c: '3',
+          d: '4',
+        },
+      ],
+    })
+  })
+  test('remove the last element of an array', () => {
+    const again = {
+      myKey: '1',
+      other: '2',
+      nested: [
+        {
+          a: '3',
+          b: '4',
+        },
+      ],
+    }
+    expect(remove(again, '.nested[0]')).toEqual({
+      myKey: '1',
+      other: '2',
+      nested: [],
+    })
+  })
 })
