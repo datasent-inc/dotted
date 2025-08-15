@@ -18,10 +18,11 @@ export const remove = (
       return object
     } else {
       query.slice(1)
-      object[criterion.search] = remove(
-        object[criterion.search],
-        query.slice(1),
-      )
+      let subObject = remove(object[criterion.search], query.slice(1))
+      if (!subObject) {
+        subObject = {}
+      }
+      object[criterion.search] = subObject
     }
   } else if (criterion.type === CriterionType.arrayMatch) {
     if (query.length === 1) {
@@ -29,10 +30,11 @@ export const remove = (
       return object
     } else {
       query.slice(1)
-      object[criterion.search] = remove(
-        object[criterion.search],
-        query.slice(1),
-      )
+      let subObject = remove(object[criterion.search], query.slice(1))
+      if (!subObject) {
+        subObject = []
+      }
+      object[criterion.search] = subObject
     }
   } else if (criterion.type === CriterionType.arrayWildCard) {
     console.warn('CriterionType.arrayWildCard removal is not supported')
