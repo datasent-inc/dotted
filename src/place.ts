@@ -1,7 +1,7 @@
 import { type Criterion, CriterionType } from './types.ts'
 import { criterionParse } from './criterionParse.ts'
-import { pick } from './pick.ts'
 import { queryStringToCriteria } from './queryStringToCriteria.ts'
+import { pick } from './pick.ts'
 
 export const place = (
   value: any,
@@ -11,32 +11,43 @@ export const place = (
   if (typeof query === 'string') {
     query = queryStringToCriteria(query)
   }
-  let placement: any = value
-  query = query.reverse()
-  for (let idx = 0; idx < query.length; idx++) {
-    const criterion = criterionParse(query[idx])
-    if (criterion.type === CriterionType.objectMatch) {
-      placement = {
-        [criterion.search]: placement,
+  const search = query[0]
+  const criterion = criterionParse(search)
+  // console.log('criterion', criterion)
+
+  if (criterion.type === CriterionType.objectMatch) {
+    if (query.length === 1) {
+      object[criterion.search] = value
+      return object
+    } else {
+      object[criterion.search] = place(
+        value,
+        object[criterion.search],
+        query.slice(1),
+      )
+      return object
+    }
+  } else if (criterion.type === CriterionType.arrayAppend) {
+    if (query.length === 1) {
+      object.push(value)
+      return object
+    } else {
+      console.warn('placing on multiple array nodes not supported')
+    }
+  } else if (criterion.type === CriterionType.arrayMatch) {
+    if (query.length === 1) {
+      if (!Array.isArray(object)) {
+        object = []
       }
-      Object.assign(object, placement)
-    } else if (criterion.type === CriterionType.arrayAppend) {
-      const arrayToAppend = pick(object, query.slice(-1).reverse())
-      arrayToAppend.push(placement)
-      place(arrayToAppend, placement, query.slice(-1).reverse())
-      placement = arrayToAppend
-    } else if (criterion.type === CriterionType.arrayMatch) {
-      //Verify that we have an array to append to, if not make one
-      if (!Array.isArray(pick(object, query.slice(-1).reverse()))) {
-        place([], object, query.slice(-1).reverse())
-      }
-      let arrayToPlace = pick(object, query.slice(-1).reverse())
-      arrayToPlace[criterion.search] = placement
-      placement = arrayToPlace
-    } else if (criterion.type === CriterionType.root) {
-      object = { ...object, ...value }
-      idx = query.length
+      object[criterion.search] = value
+      return object
+    } else {
+      object[criterion.search] = place(
+        value,
+        object[criterion.search],
+        query.slice(1),
+      )
+      return object
     }
   }
-  return object
 }
