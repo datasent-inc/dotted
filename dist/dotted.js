@@ -84,33 +84,35 @@ var place = (value, object, query) => {
   if (typeof query === "string") {
     query = queryStringToCriteria(query);
   }
-  let placement = value;
-  query = query.reverse();
-  for (let idx = 0;idx < query.length; idx++) {
-    const criterion = criterionParse(query[idx]);
-    if (criterion.type === "objectMatch" /* objectMatch */) {
-      placement = {
-        [criterion.search]: placement
-      };
-      Object.assign(object, placement);
-    } else if (criterion.type === "arrayAppend" /* arrayAppend */) {
-      const arrayToAppend = pick(object, query.slice(-1).reverse());
-      arrayToAppend.push(placement);
-      place(arrayToAppend, placement, query.slice(-1).reverse());
-      placement = arrayToAppend;
-    } else if (criterion.type === "arrayMatch" /* arrayMatch */) {
-      if (!Array.isArray(pick(object, query.slice(-1).reverse()))) {
-        place([], object, query.slice(-1).reverse());
+  const search = query[0];
+  const criterion = criterionParse(search);
+  if (criterion.type === "objectMatch" /* objectMatch */) {
+    if (query.length === 1) {
+      object[criterion.search] = value;
+      return object;
+    } else {
+      object[criterion.search] = place(value, object[criterion.search], query.slice(1));
+      return object;
+    }
+  } else if (criterion.type === "arrayAppend" /* arrayAppend */) {
+    if (query.length === 1) {
+      object.push(value);
+      return object;
+    } else {
+      console.warn("placing on multiple array nodes not supported");
+    }
+  } else if (criterion.type === "arrayMatch" /* arrayMatch */) {
+    if (query.length === 1) {
+      if (!Array.isArray(object)) {
+        object = [];
       }
-      let arrayToPlace = pick(object, query.slice(-1).reverse());
-      arrayToPlace[criterion.search] = placement;
-      placement = arrayToPlace;
-    } else if (criterion.type === "root" /* root */) {
-      object = { ...object, ...value };
-      idx = query.length;
+      object[criterion.search] = value;
+      return object;
+    } else {
+      object[criterion.search] = place(value, object[criterion.search], query.slice(1));
+      return object;
     }
   }
-  return object;
 };
 
 // src/unflatten.ts
@@ -144,12 +146,52 @@ var flatten = (obj, delimiter = ".", prefix = "") => {
   }, {});
 };
 
+// src/remove.ts
+var remove = (object, query) => {
+  if (typeof query === "string") {
+    query = queryStringToCriteria(query);
+  }
+  const search = query[0];
+  const criterion = criterionParse(search);
+  if (criterion.type === "objectMatch" /* objectMatch */) {
+    if (query.length === 1) {
+      delete object[criterion.search];
+      return object;
+    } else {
+      query.slice(1);
+      let subObject = remove(object[criterion.search], query.slice(1));
+      if (!subObject) {
+        subObject = {};
+      }
+      object[criterion.search] = subObject;
+    }
+  } else if (criterion.type === "arrayMatch" /* arrayMatch */) {
+    if (query.length === 1) {
+      object.splice(criterion.search, 1);
+      return object;
+    } else {
+      query.slice(1);
+      let subObject = remove(object[criterion.search], query.slice(1));
+      if (!subObject) {
+        subObject = [];
+      }
+      object[criterion.search] = subObject;
+    }
+  } else if (criterion.type === "arrayWildCard" /* arrayWildCard */) {
+    console.warn("CriterionType.arrayWildCard removal is not supported");
+  } else if (criterion.type === "root" /* root */) {
+    console.warn("CriterionType.root removal is not supported");
+  }
+  return object;
+};
+
 // src/dotted.ts
 var dotted_default = {
   pick,
   place,
   flatten,
-  unflatten
+  unflatten,
+  remove
 };
 export {
   dotted_default as default
