@@ -20,6 +20,7 @@ declare const _default: {
 	unflatten: (values: {
 		[key: string]: any;
 	}) => any;
+	remove: (object: any, query: string | string[] | Criterion[]) => any;
 };
 
 export {
