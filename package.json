@@ -5,7 +5,11 @@
   "license": "Apache-2.0",
   "version": "1.0.19",
   "repository": {
+    "type": "git",
     "url": "https://github.com/datasent-inc/dotted.git"
+  },
+  "bugs": {
+    "url": "n"
   },
   "author": "Greg Elliot <greg.elliot@datasent.com>",
   "main": "dist/dotted.js",
